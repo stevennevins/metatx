@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2",
     "ds-test": "github:dapphub/ds-test",
-    "forge-std": "github:foundry-rs/forge-std"
+    "forge-std": "github:foundry-rs/forge-std",
+    "solady": "^0.0.173"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
