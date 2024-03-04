@@ -32,11 +32,18 @@ contract Forwarder is EIP712 {
 
     constructor() EIP712("Forwarder", "1") {}
 
+    function execute(ForwardRequest memory request, bytes memory sig) external payable {
+        _execute(request, sig);
+    }
+
     function execute(bytes calldata compressedData) external payable {
         bytes memory data = compressedData.flzDecompress();
 
         (ForwardRequest memory request, bytes memory sig) = abi.decode(data, (ForwardRequest, bytes));
         _execute(request, sig);
+    }
+    function isTrustedByTarget(address _target) external view returns (bool) {
+        return _isTrustedByTarget(_target);
     }
 
     function _execute(ForwardRequest memory req, bytes memory signature) internal returns (bool, bytes memory) {
